@@ -1,3 +1,4 @@
 env/
 monitoring/monitoring/__pycache__/
 monitoring/web/__pycache__/
+monitoring/web/migrations/__pycache__/
