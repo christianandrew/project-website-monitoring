@@ -13,3 +13,6 @@ def data_master_pengguna(request):
 
 def monitoring(request):
     return render(request, 'web/monitoring.html')
+
+def admin_index(request):
+    return render(request,'web/admin_index.html')
