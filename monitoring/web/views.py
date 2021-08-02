@@ -7,3 +7,9 @@ def index(request):
 
 def data_master_cabang(request):
     return render(request, 'web/datamaster_cabang.html')
+
+def data_master_pengguna(request):
+    return render(request, 'web/pengguna.html')
+
+def monitoring(request):
+    return render(request, 'web/monitoring.html')
