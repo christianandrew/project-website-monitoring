@@ -16,3 +16,6 @@ def monitoring(request):
 
 def admin_index(request):
     return render(request,'web/admin_index.html')
+
+def admin_penjualan(request):
+    return render(request, 'web/admin_penjualan.html')    
