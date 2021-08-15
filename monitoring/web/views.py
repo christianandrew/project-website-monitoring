@@ -18,4 +18,7 @@ def admin_index(request):
     return render(request,'web/admin_index.html')
 
 def admin_penjualan(request):
-    return render(request, 'web/admin_penjualan.html')    
+    return render(request, 'web/admin_penjualan.html')
+
+def admin_piutang(request):
+    return render(request, 'web/admin_piutang.html')

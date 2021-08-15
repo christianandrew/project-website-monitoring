@@ -11,4 +11,5 @@ urlpatterns = [
     path('monitoring/', views.monitoring,name='monitoring'),
     path('admindir/', views.admin_index, name='admin_index'),
     path('admindir/penjualan/', views.admin_penjualan),
+    path('admindir/piutang/', views.admin_piutang),
 ]
