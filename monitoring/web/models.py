@@ -29,3 +29,12 @@ class AkunBank(models.Model):
     nama_pemilik = models.TextField()    
 
 
+class Penjualan(models.Model):
+    no_resi = models.TextField()
+    tanggal = models.DateTimeField(auto_now_add=True)
+    colly = models.TextField()
+    kg = models.TextField()
+    pengirim = models.TextField()
+    penerima = models.TextField()
+    tujuan = models.TextField()
+    nominal = models.TextField()
