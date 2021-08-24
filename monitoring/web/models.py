@@ -10,7 +10,16 @@ class People(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')
     nama = models.TextField()
-    role = models.IntegerField()    
+    role = models.IntegerField()
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            People.objects.create(user=instance, role=0)
+    
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()    
 
 class Pelanggan(models.Model):
     nama_perusahaan = models.TextField()
