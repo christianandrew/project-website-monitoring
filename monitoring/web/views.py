@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.http.request import HttpRequest
-from .models import AkunBank, Cabang, People
+from .models import AkunBank, Cabang, Pelanggan, People
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
@@ -122,6 +122,53 @@ def data_master_bank(request: HttpRequest):
         }    
 
     return render(request, 'web/datamaster_bank.html', ctx)
+
+def data_master_pelanggan(request: HttpRequest):
+    if request.method == 'GET':
+        pelanggans = Pelanggan.objects.all().order_by('-id')
+        ctx = {
+            'pelanggans': pelanggans
+        }
+    else:
+        d = request.POST
+        id = d.get("id", None)
+        nama = d.get("nama_perusahaan", None)
+        alamat = d.get("alamat", None)
+        kota = d.get("kota", None)
+        telpon = d.get("telpon", None)
+        nama_spv = d.get("nama_spv", None)
+        telfon_spv = d.get("telfon_spv", None)
+        edit = d.get("edit", None)
+        if id:
+            p = Pelanggan.objects.get(id=id)
+        if edit:
+            p: Pelanggan = Pelanggan.objects.get(id=id)
+            p.nama_perusahaan = nama
+            p.alamat = alamat
+            p.kota = kota
+            p.telpon = telpon
+            p.nama_spv = nama_spv
+            p.telfon_spv = telfon_spv
+            p.save()
+        elif nama:
+            p: Pelanggan = Pelanggan(
+                nama_perusahaan = nama,
+                alamat = alamat,
+                kota = kota,
+                telpon = telpon,
+                nama_spv = nama_spv,
+                telfon_spv = telfon_spv
+            )    
+            p.save()
+        pelanggans = Pelanggan.objects.all().order_by('-id')
+        ctx = {
+            'pelanggans': pelanggans,
+            'cabang': p,
+            'edit': 'edit' in d
+
+        }    
+
+    return render(request, 'web/datamaster_pelanggan.html', ctx)
 
 def monitoring(request):
     return render(request, 'web/monitoring.html')

@@ -9,6 +9,7 @@ urlpatterns = [
     path('datamaster/cabang/', views.data_master_cabang, name='datamaster'),
     path('datamaster/pengguna/', views.data_master_pengguna, name= 'datamaster'),
     path('datamaster/bank/', views.data_master_bank),
+    path('datamaster/pelanggan/', views.data_master_pelanggan),
     path('monitoring/', views.monitoring,name='monitoring'),
     path('admindir/', views.admin_index, name='admin_index'),
     path('admindir/penjualan/', views.admin_penjualan),
