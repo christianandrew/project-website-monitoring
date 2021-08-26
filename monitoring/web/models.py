@@ -26,7 +26,8 @@ class Pelanggan(models.Model):
     alamat = models.TextField()
     kota = models.TextField()
     telpon = models.TextField()
-    #TODO: supervisor nama dan telpon
+    nama_spv = models.TextField()
+    telfon_spv = models.TextField()
 
 class Cabang(models.Model):
     nama = models.TextField()
