@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.http.request import HttpRequest
-from .models import Cabang, People
+from .models import AkunBank, Cabang, People
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
@@ -89,6 +89,39 @@ def data_master_pengguna(request: HttpRequest):
         }    
 
     return render(request, 'web/datamaster_pengguna.html', ctx)
+
+
+def data_master_bank(request: HttpRequest):
+    if request.method == 'GET':
+        banks = AkunBank.objects.all().order_by('-id')
+        ctx = {
+            'banks': banks
+        }
+    else:
+        d = request.POST
+        id = d.get("id", None)
+        nama_bank = d.get("nama_bank", None)
+        nomor_rekening = d.get("nomor_rekening", None)
+        nama_pemilik = d.get('nama_pemilik', None)
+        if id:
+            bank = AkunBank.objects.get(id=id)
+        if 'edit' in d:
+            bank:AkunBank = AkunBank.objects.get(id=id)
+            bank.nama_bank = nama_bank
+            bank.nomor_rekening = nomor_rekening
+            bank.nama_pemilik = nama_pemilik
+            bank.save()
+        elif nama_pemilik:
+            bank: AkunBank = AkunBank(nama_bank=nama_bank, nomor_rekening=nomor_rekening, nama_pemilik=nama_pemilik)
+            bank.save()    
+        banks = AkunBank.objects.all().order_by('-id')
+        ctx = {
+            'banks': banks,
+            'bank': bank,
+            'edit': 'edit' in d
+        }    
+
+    return render(request, 'web/datamaster_bank.html', ctx)
 
 def monitoring(request):
     return render(request, 'web/monitoring.html')
