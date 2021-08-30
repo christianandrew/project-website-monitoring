@@ -43,7 +43,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Penjualan Baru</h1>
+            <h1 class="m-0">Dashboard Pelunasan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -70,19 +70,18 @@
         <div class="row">
           <div class="col">
             <!-- small box -->
-            <!-- <div class="card">
+            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Penjualan Baru</h3>
-              </div> -->
+                <h3 class="card-title">Piutang Penjualan</h3>
+              </div>
               <!-- /.card-header -->
-              <!-- <div class="card-body">
+              <div class="card-body">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Tanggal</th>
-                      <th>Resi</th>
-                      <th>Total</th>
+                      <th>Pelanggan</th>
+                      <th>Piutang</th>
                       <th>Aksi</th>
                       <th>Aksi</th>
                     </tr>
@@ -90,17 +89,16 @@
                   <tbody>
                     <tr>
                       <td>1.</td>
-                      <td>25 Juni 2021</td>
-                      <td>312421312312312</td>
+                      <td>Andrew</td>
                       <td>Rp. 1.600.000</td>
                       <td><a href="#" class="btn btn-primary">Detail</a></td>
                       <td><a href="#" class="btn btn-danger">Hapus</a></td>
                     </tr>
                   </tbody>
                 </table>
-              </div> -->
+              </div>
               <!-- /.card-body -->
-              <!-- <div class="card-footer clearfix">
+              <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
                   <li class="page-item"><a class="page-link" href="#">«</a></li>
                   <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -108,58 +106,65 @@
                   <li class="page-item"><a class="page-link" href="#">3</a></li>
                   <li class="page-item"><a class="page-link" href="#">»</a></li>
                 </ul>
-              </div> -->
+              </div>
             </div>
           </div>
           <!-- ./col -->
         </div>
-        <!-- /.row -->
-       <div class="row">
-         <div class="col">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Detail Penjualan</h3>
+        <div class="row">
+            <div class="col">
+              <!-- small box -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Invoice</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Pelanggan</th>
+                        <th>No Invoice</th>
+                        <th>Piutang</th>
+                        <th>Aksi</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1.</td>
+                        <td>Andrew</td>
+                        <td>001</td>
+                        <td>Rp. 1.600.000</td>
+                        <td><a href="#" class="btn btn-primary">Detail</a></td>
+                        <td><a href="#" class="btn btn-danger">Hapus</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer clearfix">
+                  <ul class="pagination pagination-sm m-0 float-right">
+                    <li class="page-item"><a class="page-link" href="#">«</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">»</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form role="form">
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="namaPerusahaan">Nama Perusahaan</label>
-                  <input type="text" class="form-control" id="namaPerusahaan" placeholder="Nama Perusahaan" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                </div>
-                <div class="form-group">
-                  <label for="alamat">Alamat</label>
-                  <input type="text" class="form-control" id="alamat" placeholder="Alamat" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                </div>
-                <div class="form-group">
-                  <label for="kota">Kota</label>
-                  <input type="text" class="form-control" id="kota" placeholder="Kota" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                </div>
-                <div class="form-group">
-                  <label for="noTelp">No telp</label>
-                  <input type="text" class="form-control" id="noTelp" placeholder="No Telp" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                </div>
-                <div class="form-group">
-                  <label for="namaSupervisor">Nama Supervisor</label>
-                  <input type="text" class="form-control" id="namaSupervisor" placeholder="Nama Supervisor" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-              </div>
-              <!-- /.card-body -->
-
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+            <!-- ./col -->
+          </div>
+        <!-- /.row -->
           </div>
          </div>
        </div>
       </div><!-- /.container-fluid -->
     </section>
+        <!-- /.container-fluid -->
+      </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

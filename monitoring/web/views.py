@@ -181,3 +181,15 @@ def admin_penjualan(request):
 
 def admin_piutang(request):
     return render(request, 'web/admin_piutang.html')
+
+def admin_addPenjualan(request):
+    return render(request, 'web/admin_addPenjualan.html')
+
+def admin_piutangpelanggan(request):
+    return render(request, 'web/admin_piutangpelanggan.html')
+
+def admin_invoice(request):
+    return render(request, 'web/admin_invoice.html')
+
+def admin_pelunasan(request):
+    return render(request, 'web/admin_pelunasan.html')
