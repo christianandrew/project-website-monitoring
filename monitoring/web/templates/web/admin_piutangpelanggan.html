@@ -34,7 +34,7 @@
     <img class="animation__shake" src="/static/front/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
-  {% include "web/includes/nav_admin.html" with active_tab='penjualan' role='Andrew | Administrator' %}
+  {% include "web/includes/nav_admin.html" with active_tab='piutang' role='Andrew | Administrator' %}
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -56,7 +56,7 @@
           <div class="col-sm-6">
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <a href="#" class="btn btn-primary float-sm-right">Tambah Penjualan</a>
+            <a href="/admindir/piutangpelanggan/add" class="btn btn-primary float-sm-right">Tambah Piutang</a>
           </div><!-- /.col -->
         </div>
       </div><!-- /.container-fluid -->
@@ -87,13 +87,15 @@
                     </tr>
                   </thead>
                   <tbody>
+                  {% for p in piutang %}
                     <tr>
-                      <td>1.</td>
-                      <td>Andrew</td>
+                      <td>{{ p.id }}</td>
+                      <td>{{ p.pelanggan.nama_perusahaan }}</td>
                       <td>Rp. 1.600.000</td>
                       <td><a href="#" class="btn btn-primary">Detail</a></td>
                       <td><a href="#" class="btn btn-danger">Hapus</a></td>
                     </tr>
+                  {% endfor %}
                   </tbody>
                 </table>
               </div>

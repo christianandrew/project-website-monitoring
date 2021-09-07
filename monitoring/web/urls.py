@@ -16,6 +16,7 @@ urlpatterns = [
     path('admindir/piutang/', views.admin_piutang),
     path('admindir/addpenjualan/', views.admin_addPenjualan),
     path('admindir/piutangpelanggan/', views.admin_piutangpelanggan),
+    path('admindir/piutangpelanggan/add/', views.admin_add_piutang),
     path('admindir/invoice/', views.admin_invoice),
     path('admindir/pelunasan/', views.admin_pelunasan)
 ]

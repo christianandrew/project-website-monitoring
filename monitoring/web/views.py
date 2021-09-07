@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.http.request import HttpRequest
-from .models import AkunBank, Cabang, Pelanggan, People, Penjualan
+from .models import AkunBank, Cabang, Pelanggan, People, Penjualan, Piutang
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
@@ -210,7 +210,7 @@ def admin_penjualan(request):
             p.kota = kota
             p.colly = colly
             p.kg = kg
-            p. pengirim = pengirim
+            p.pengirim = pengirim
             p.penerima = penerima
             p.tujuan = tujuan
             p.nominal = nominal
@@ -257,8 +257,34 @@ def admin_addPenjualan(request):
 
 
 def admin_piutangpelanggan(request):
-    return render(request, 'web/admin_piutangpelanggan.html')
+    p = Piutang.objects.all().order_by('-id')
+    ctx = {
+        'piutang':p
+    }
+    return render(request, 'web/admin_piutangpelanggan.html', ctx)
 
+def admin_add_piutang(request):
+    if request.method == 'GET':
+        pelanggan = Pelanggan.objects.all().order_by('-id')
+        resi = Penjualan.objects.all().order_by('-id')
+        ctx = {
+            'pelanggan': pelanggan,
+            'resi': resi
+        }
+        return render(request, 'web/admin_add_piutang.html', ctx)
+    else:
+        d = request.POST
+        id_p = d.get('pelanggan', None)
+        id_r = d.get('resi', None)
+        if id_r and id_p:
+            p = Pelanggan.objects.get(id=id_p)
+            r = Penjualan.objects.get(id=id_r)
+            holder = Piutang(
+                pelanggan=p,
+                penjualan=r
+            )
+            holder.save()
+        return redirect('/admindir/piutangpelanggan/')
 
 def admin_invoice(request):
     return render(request, 'web/admin_invoice.html')

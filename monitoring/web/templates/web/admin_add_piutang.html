@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Penjualan | Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -43,15 +43,21 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Piutang Baru</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Monitoring</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            </div><!-- /.col -->
+        </div>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -61,51 +67,89 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-4 col-6">
+          <div class="col">
             <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>Tambah Piutang </br>Pelanggan</h3>
-
-              </div>
-              <div class="icon">
-                <i class="ion ion-card"></i>
-              </div>
-              <a href="/admindir/piutangpelanggan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!-- <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Penjualan Baru</h3>
+              </div> -->
+              <!-- /.card-header -->
+              <!-- <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Tanggal</th>
+                      <th>Resi</th>
+                      <th>Total</th>
+                      <th>Aksi</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1.</td>
+                      <td>25 Juni 2021</td>
+                      <td>312421312312312</td>
+                      <td>Rp. 1.600.000</td>
+                      <td><a href="#" class="btn btn-primary">Detail</a></td>
+                      <td><a href="#" class="btn btn-danger">Hapus</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> -->
+              <!-- /.card-body -->
+              <!-- <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">«</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">»</a></li>
+                </ul>
+              </div> -->
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>Lihat </br> Invoice </h3>
-              </div>
-              <div class="icon">
-                <i class="ion ion-card"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>Pelunasan </br> Piutang</h3>
-              </div>
-              <div class="icon">
-                <i class="ion ion-card"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          
           <!-- ./col -->
         </div>
         <!-- /.row -->
-       
+       <div class="row">
+         <div class="col">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Tambah baru</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" method="post">
+                {%  csrf_token %}
+              <div class="card-body">
+                <div class="form-group">
+                      <label for="resi">Pelanggan</label>
+                      <select class="custom-select rounded-0" id="resi" name="pelanggan">
+                        {% for p in pelanggan %}
+                        <option value="{{p.id}}">{{p.nama_perusahaan}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+              <div class="form-group">
+                      <label for="resi">Resi</label>
+                      <select class="custom-select rounded-0" id="resi" name="resi">
+                        {% for p in resi %}
+                        <option value="{{p.id}}">{{p.no_resi}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+         </div>
+       </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

@@ -54,3 +54,8 @@ class Penjualan(models.Model):
     penerima = models.TextField()
     tujuan = models.TextField()
     nominal = models.TextField()
+
+
+class Piutang(models.Model):
+    penjualan = models.ForeignKey(Penjualan, on_delete=models.CASCADE)
+    pelanggan = models.ForeignKey(Pelanggan, on_delete=models.CASCADE)
