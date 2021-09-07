@@ -1,14 +1,17 @@
 from django.contrib.auth.models import User
 from django.http.request import HttpRequest
-from .models import AkunBank, Cabang, Pelanggan, People
-from django.shortcuts import render
+from .models import AkunBank, Cabang, Pelanggan, People, Penjualan
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+
 # Create your views here.
 def index(request):
-    #TODO: Logic buat nampilin piutang dan omsets
+    # TODO: Logic buat nampilin piutang dan omsets
     return render(request, 'web/index.html')
 
-#datamaster/cabang/
+
+# datamaster/cabang/
 def data_master_cabang(request: HttpRequest):
     if request.method == 'GET':
         cabangs = Cabang.objects.all().order_by('id')
@@ -36,13 +39,13 @@ def data_master_cabang(request: HttpRequest):
             cabang: Cabang = Cabang(nama=nama, alamat=alamat)
             cabang.save()
             status = True
-        cabangs = Cabang.objects.all().order_by('id')    
+        cabangs = Cabang.objects.all().order_by('id')
         ctx = {
             'status': status,
             'cabang': cabang,
             'cabangs': cabangs
-        }     
-            
+        }
+
         return render(request, 'web/datamaster_cabang.html', ctx)
 
 
@@ -86,7 +89,7 @@ def data_master_pengguna(request: HttpRequest):
             'status': status,
             'cabang': people,
             'edit': 'edit' in d
-        }    
+        }
 
     return render(request, 'web/datamaster_pengguna.html', ctx)
 
@@ -106,22 +109,23 @@ def data_master_bank(request: HttpRequest):
         if id:
             bank = AkunBank.objects.get(id=id)
         if 'edit' in d:
-            bank:AkunBank = AkunBank.objects.get(id=id)
+            bank: AkunBank = AkunBank.objects.get(id=id)
             bank.nama_bank = nama_bank
             bank.nomor_rekening = nomor_rekening
             bank.nama_pemilik = nama_pemilik
             bank.save()
         elif nama_pemilik:
             bank: AkunBank = AkunBank(nama_bank=nama_bank, nomor_rekening=nomor_rekening, nama_pemilik=nama_pemilik)
-            bank.save()    
+            bank.save()
         banks = AkunBank.objects.all().order_by('-id')
         ctx = {
             'banks': banks,
             'bank': bank,
             'edit': 'edit' in d
-        }    
+        }
 
     return render(request, 'web/datamaster_bank.html', ctx)
+
 
 def data_master_pelanggan(request: HttpRequest):
     if request.method == 'GET':
@@ -152,13 +156,13 @@ def data_master_pelanggan(request: HttpRequest):
             p.save()
         elif nama:
             p: Pelanggan = Pelanggan(
-                nama_perusahaan = nama,
-                alamat = alamat,
-                kota = kota,
-                telpon = telpon,
-                nama_spv = nama_spv,
-                telfon_spv = telfon_spv
-            )    
+                nama_perusahaan=nama,
+                alamat=alamat,
+                kota=kota,
+                telpon=telpon,
+                nama_spv=nama_spv,
+                telfon_spv=telfon_spv
+            )
             p.save()
         pelanggans = Pelanggan.objects.all().order_by('-id')
         ctx = {
@@ -166,30 +170,99 @@ def data_master_pelanggan(request: HttpRequest):
             'cabang': p,
             'edit': 'edit' in d
 
-        }    
+        }
 
     return render(request, 'web/datamaster_pelanggan.html', ctx)
+
 
 def monitoring(request):
     return render(request, 'web/monitoring.html')
 
+
 def admin_index(request):
-    return render(request,'web/admin_index.html')
+    return render(request, 'web/admin_index.html')
+
 
 def admin_penjualan(request):
-    return render(request, 'web/admin_penjualan.html')
+    if request.method == 'GET':
+        p = Penjualan.objects.all().order_by('-id')
+        ctx = {
+            'penjualans': p
+        }
+        return render(request, 'web/admin_penjualan.html', ctx)
+    else:
+        d = request.POST
+        obj_id = d.get('id', None)
+        edit = d.get('edit', None)
+        resi = d.get("noresi", None)
+        kota = d.get('kota', None)
+        colly = d.get("colly", None)
+        kg = d.get("kg", None)
+        pengirim = d.get("pengirim", None)
+        penerima = d.get("penerima", None)
+        tujuan = d.get('tujuan', None)
+        nominal = d.get('nominal', None)
+
+        if obj_id:
+            p = Penjualan.objects.get(id=obj_id)
+        if edit:
+            p.no_resi = resi
+            p.kota = kota
+            p.colly = colly
+            p.kg = kg
+            p. pengirim = pengirim
+            p.penerima = penerima
+            p.tujuan = tujuan
+            p.nominal = nominal
+            p.save()
+            p = None
+        all = Penjualan.objects.all().order_by('-id')
+        ctx = {
+            'penjualan': p,
+            'penjualans': all
+        }
+        return render(request, 'web/admin_penjualan.html', ctx)
+
 
 def admin_piutang(request):
     return render(request, 'web/admin_piutang.html')
 
+
 def admin_addPenjualan(request):
-    return render(request, 'web/admin_addPenjualan.html')
+    if request.method == 'GET':
+        return render(request, 'web/admin_addPenjualan.html')
+    else:
+        d = request.POST
+        resi = d.get("noresi", None)
+        kota = d.get('kota', None)
+        colly = d.get("colly", None)
+        kg = d.get("kg", None)
+        pengirim = d.get("pengirim", None)
+        penerima = d.get("penerima", None)
+        tujuan = d.get('tujuan', None)
+        nominal = d.get('nominal', None)
+        if resi:
+            p = Penjualan(
+                no_resi=resi,
+                penerima=penerima,
+                pengirim=pengirim,
+                nominal=nominal,
+                tujuan=tujuan,
+                colly=colly,
+                kg=kg,
+                kota=kota
+            )
+            p.save()
+        return redirect('/admindir/penjualan/')
+
 
 def admin_piutangpelanggan(request):
     return render(request, 'web/admin_piutangpelanggan.html')
 
+
 def admin_invoice(request):
     return render(request, 'web/admin_invoice.html')
+
 
 def admin_pelunasan(request):
     return render(request, 'web/admin_pelunasan.html')

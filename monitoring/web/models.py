@@ -3,9 +3,11 @@ from django.contrib.auth.models import User
 # Create your models here.
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
+
 # Create your models here.
 
-#ini adalah extend dari class User. Isinya berkaitan dengan siapa yang logged in
+# ini adalah extend dari class User. Isinya berkaitan dengan siapa yang logged in
 class People(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')
@@ -16,10 +18,11 @@ class People(models.Model):
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             People.objects.create(user=instance, role=0)
-    
+
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()    
+        instance.profile.save()
+
 
 class Pelanggan(models.Model):
     nama_perusahaan = models.TextField()
@@ -29,14 +32,16 @@ class Pelanggan(models.Model):
     nama_spv = models.TextField()
     telfon_spv = models.TextField()
 
+
 class Cabang(models.Model):
     nama = models.TextField()
     alamat = models.TextField()
 
+
 class AkunBank(models.Model):
     nama_bank = models.TextField()
     nomor_rekening = models.TextField()
-    nama_pemilik = models.TextField()    
+    nama_pemilik = models.TextField()
 
 
 class Penjualan(models.Model):
@@ -44,6 +49,7 @@ class Penjualan(models.Model):
     tanggal = models.DateTimeField(auto_now_add=True)
     colly = models.TextField()
     kg = models.TextField()
+    kota = models.TextField()
     pengirim = models.TextField()
     penerima = models.TextField()
     tujuan = models.TextField()
